@@ -14,10 +14,10 @@ public class Ticket_Entity
     private String name;
     @Column(nullable = false ,columnDefinition = "VARCHAR(255) default 'TODO'")
     private Stages stage;
-    @ManyToMany(mappedBy = "listOfTickets")
-    List<User_Entity> listOfUser;
-    @Column(nullable = false)
-    private User_Entity creator;
+//    @ManyToMany(mappedBy = "listOfTickets")
+//    List<User_Entity> listOfUser;
+@OneToOne
+private User_Entity userEntity;
 
     @Column(nullable = false)
     private String creationDate;
@@ -50,21 +50,21 @@ public class Ticket_Entity
         this.stage = stage;
     }
 
-    public List<User_Entity> getListOfUser() {
-        return listOfUser;
-    }
-
-    public void setListOfUser(List<User_Entity> listOfUser) {
-        this.listOfUser = listOfUser;
-    }
-
-    public User_Entity getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User_Entity creator) {
-        this.creator = creator;
-    }
+//    public List<User_Entity> getListOfUser() {
+//        return listOfUser;
+//    }
+//
+//    public void setListOfUser(List<User_Entity> listOfUser) {
+//        this.listOfUser = listOfUser;
+//    }
+//
+//    public User_Entity getCreator() {
+//        return creator;
+//    }
+//
+//    public void setCreator(User_Entity creator) {
+//        this.creator = creator;
+//    }
 
     public String getCreationDate() {
         return creationDate;
@@ -90,16 +90,16 @@ public class Ticket_Entity
         this.projectEntity = projectEntity;
     }
 
-    public Ticket_Entity(Long id, String name, Stages stage, List<User_Entity> listOfUser, User_Entity creator, String creationDate, String endDate, Project_Entity projectEntity) {
-        this.id = id;
-        this.name = name;
-        this.stage = stage;
-        this.listOfUser = listOfUser;
-        this.creator = creator;
-        this.creationDate = creationDate;
-        this.endDate = endDate;
-        this.projectEntity = projectEntity;
-    }
+//    public Ticket_Entity(Long id, String name, Stages stage, List<User_Entity> listOfUser, User_Entity creator, String creationDate, String endDate, Project_Entity projectEntity) {
+//        this.id = id;
+//        this.name = name;
+//        this.stage = stage;
+//        this.listOfUser = listOfUser;
+//        this.creator = creator;
+//        this.creationDate = creationDate;
+//        this.endDate = endDate;
+//        this.projectEntity = projectEntity;
+//    }
 
     public Ticket_Entity() {
     }
@@ -110,8 +110,8 @@ public class Ticket_Entity
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", stage=" + stage +
-                ", listOfUser=" + listOfUser +
-                ", creator=" + creator +
+//                ", listOfUser=" + listOfUser +
+//                ", creator=" + creator +
                 ", creationDate='" + creationDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", projectEntity=" + projectEntity +

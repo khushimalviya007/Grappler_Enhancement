@@ -5,16 +5,17 @@ import jakarta.persistence.*;
 import java.util.List;
 @Entity
 public class User_Entity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(nullable = false )
+    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
     private String name;
-    @Column(nullable = false )
+    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
     private String password;
-    @Column(nullable = false )
+    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "VARCHAR(15)")
     private String phoneNo;
     @ManyToMany
     private List<Notification_Entity> listOfNotifications;
@@ -23,16 +24,16 @@ public class User_Entity {
     @ManyToMany
     private List<Ticket_Entity> listOfTickets;
 
-    public User_Entity(Long id, String name, String password, String email, String phoneNo, List<Notification_Entity> listOfNotifications, List<Alert_Entity> listOfAlerts, List<Ticket_Entity> listOfTickets) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.phoneNo = phoneNo;
-        this.listOfNotifications = listOfNotifications;
-        this.listOfAlerts = listOfAlerts;
-        this.listOfTickets = listOfTickets;
-    }
+//    public User_Entity(Long id, String name, String password, String email, String phoneNo, List<Notification_Entity> listOfNotifications, List<Alert_Entity> listOfAlerts, List<Ticket_Entity> listOfTickets) {
+//        this.id = id;
+//        this.name = name;
+//        this.password = password;
+//        this.email = email;
+//        this.phoneNo = phoneNo;
+//        this.listOfNotifications = listOfNotifications;
+//        this.listOfAlerts = listOfAlerts;
+//        this.listOfTickets = listOfTickets;
+//    }
 
     public User_Entity() {
     }
@@ -77,21 +78,21 @@ public class User_Entity {
         this.phoneNo = phoneNo;
     }
 
-    public List<Notification_Entity> getListOfNotifications() {
-        return listOfNotifications;
-    }
-
-    public void setListOfNotifications(List<Notification_Entity> listOfNotifications) {
-        this.listOfNotifications = listOfNotifications;
-    }
-
-    public List<Alert_Entity> getListOfAlerts() {
-        return listOfAlerts;
-    }
-
-    public void setListOfAlerts(List<Alert_Entity> listOfAlerts) {
-        this.listOfAlerts = listOfAlerts;
-    }
+//    public List<Notification_Entity> getListOfNotifications() {
+//        return listOfNotifications;
+//    }
+//
+//    public void setListOfNotifications(List<Notification_Entity> listOfNotifications) {
+//        this.listOfNotifications = listOfNotifications;
+//    }
+//
+//    public List<Alert_Entity> getListOfAlerts() {
+//        return listOfAlerts;
+//    }
+//
+//    public void setListOfAlerts(List<Alert_Entity> listOfAlerts) {
+//        this.listOfAlerts = listOfAlerts;
+//    }
 
     public List<Ticket_Entity> getListOfTickets() {
         return listOfTickets;
@@ -109,8 +110,8 @@ public class User_Entity {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
-                ", listOfNotifications=" + listOfNotifications +
-                ", listOfAlerts=" + listOfAlerts +
+//                ", listOfNotifications=" + listOfNotifications +
+//                ", listOfAlerts=" + listOfAlerts +
                 ", listOfTickets=" + listOfTickets +
                 '}';
     }

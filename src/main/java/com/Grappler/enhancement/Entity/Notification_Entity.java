@@ -15,19 +15,20 @@ public class Notification_Entity {
     private String title;
     @Column(nullable = false )
     private String description;
-    @Column(nullable = false )
+    @ElementCollection
+    @CollectionTable(name = "notification_channels", joinColumns = @JoinColumn(name = "notification_id"))
+    @Column(name = "channel")
     private List<String> channels;
     @Column(nullable = false )
     private LocalDateTime dateAndTime;
     @Column(nullable = false ,columnDefinition = "boolean default false")
     private boolean isRead;
-    @ManyToMany
+    @ManyToMany(mappedBy="listOfNotifications")
     private List<User_Entity> listOfUser;
     @OneToOne
     private Template_Entity template;
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Ticket_Entity ticket;
-
 
     public Template_Entity getTemplate() {
         return template;
@@ -99,13 +100,13 @@ public class Notification_Entity {
         isRead = read;
     }
 
-    public List<User_Entity> getListOfUsers() {
-        return listOfUser;
-    }
-
-    public void setListOfUsers(List<User_Entity> listOfUsers) {
-        this.listOfUser = listOfUsers;
-    }
+//    public List<User_Entity> getListOfUsers() {
+//        return listOfUser;
+//    }
+//
+//    public void setListOfUsers(List<User_Entity> listOfUsers) {
+//        this.listOfUser = listOfUsers;
+//    }
 
     @Override
     public String toString() {
@@ -116,7 +117,7 @@ public class Notification_Entity {
                 ", channels=" + channels +
                 ", dateAndTime=" + dateAndTime +
                 ", isRead=" + isRead +
-                ", listOfUsers=" + listOfUser +
+//                ", listOfUsers=" + listOfUser +
                 ", template=" + template +
                 '}';
     }

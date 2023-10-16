@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-public class Alert_Entity {
+   @Entity
+    public class Alert_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -19,23 +19,23 @@ public class Alert_Entity {
     @Column(nullable = false )
     private LocalDateTime dateAndTime;
     private String response;
-    @ManyToMany
+    @ManyToMany(mappedBy = "listOfAlerts")
     private List<User_Entity> listOfUsers;
     @OneToOne(optional = false)
     private Ticket_Entity ticket;
     @OneToOne
     private Template_Entity template;
 
-    public Alert_Entity(Long id, AlertType type, String description, List<String> channels, LocalDateTime dateAndTime, String response, List<User_Entity> listOfUsers, Template_Entity template) {
-        this.id = id;
-        this.type = type;
-        this.description = description;
-        this.channels = channels;
-        this.dateAndTime = dateAndTime;
-        this.response = response;
-        this.listOfUsers = listOfUsers;
-        this.template = template;
-    }
+//    public Alert_Entity(Long id, AlertType type, String description, List<String> channels, LocalDateTime dateAndTime, String response, List<User_Entity> listOfUsers, Template_Entity template) {
+//        this.id = id;
+//        this.type = type;
+//        this.description = description;
+//        this.channels = channels;
+//        this.dateAndTime = dateAndTime;
+//        this.response = response;
+//        this.listOfUsers = listOfUsers;
+//        this.template = template;
+//    }
 
     public Alert_Entity() {
     }
@@ -88,13 +88,13 @@ public class Alert_Entity {
         this.response = response;
     }
 
-    public List<User_Entity> getListOfUsers() {
-        return listOfUsers;
-    }
-
-    public void setListOfUsers(List<User_Entity> listOfUsers) {
-        this.listOfUsers = listOfUsers;
-    }
+//    public List<User_Entity> getListOfUsers() {
+//        return listOfUsers;
+//    }
+//
+//    public void setListOfUsers(List<User_Entity> listOfUsers) {
+//        this.listOfUsers = listOfUsers;
+//    }
 
     public Template_Entity getTemplate() {
         return template;
@@ -113,7 +113,7 @@ public class Alert_Entity {
                 ", channels=" + channels +
                 ", dateAndTime=" + dateAndTime +
                 ", response='" + response + '\'' +
-                ", listOfUsers=" + listOfUsers +
+//                ", listOfUsers=" + listOfUsers +
                 ", template=" + template +
                 '}';
     }
